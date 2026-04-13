@@ -16,6 +16,48 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   
+  <!-- Микроразметка Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Написание студенческих работ",
+    "provider": {
+      "@type": "Person",
+      "name": "Адель Фанисович",
+      "telephone": "+79539995298",
+      "url": "https://t.me/a_fanisovich"
+    },
+    "areaServed": "Россия",
+    "description": "Рефераты, курсовые, дипломы. Опыт 7 лет, высокая уникальность, срочное написание.",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Реферат",
+        "price": "990",
+        "priceCurrency": "RUB"
+      },
+      {
+        "@type": "Offer",
+        "name": "Курсовая работа",
+        "price": "2490",
+        "priceCurrency": "RUB"
+      },
+      {
+        "@type": "Offer",
+        "name": "Дипломная работа",
+        "price": "8990",
+        "priceCurrency": "RUB"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "127"
+    }
+  }
+  </script>
+  
   <style>
     :root {
       --primary: #2563eb;
@@ -219,6 +261,12 @@
       font-weight: 800;
     }
 
+    .discount-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
     .discount-badge {
       background: var(--bg-white);
       border-radius: 60px;
@@ -226,6 +274,12 @@
       font-weight: 700;
       color: #b45309;
       font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .discount-badge:hover {
+      background: #fef3c7;
     }
 
     .section-title {
@@ -440,6 +494,84 @@
       transform: rotate(180deg);
     }
 
+    /* Отзывы – новый блок */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .review-card {
+      background: var(--bg-white);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+      border: 1px solid var(--border-color);
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .review-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .review-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid var(--border-color);
+    }
+
+    .review-info h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .review-info .review-role {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .review-stars {
+      color: #fbbf24;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+
+    .review-text {
+      color: var(--text-main);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+
+    .show-more-btn {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .review-card.hidden-review {
+      display: none;
+    }
+
+    .reviews-grid.expanded .review-card.hidden-review {
+      display: flex;
+    }
+
     /* Кнопка наверх */
     #scrollTopBtn {
       position: fixed;
@@ -510,6 +642,27 @@
       margin-top: 60px;
     }
 
+    /* Анимация появления блоков */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Скрытый номер – показываем только иконку */
+    .phone-icon-link {
+      font-size: 1.5rem;
+      color: var(--primary);
+      transition: 0.2s;
+    }
+    .phone-icon-link:hover {
+      color: var(--primary-hover);
+    }
+
     @media (max-width: 768px) {
       .header { justify-content: center; flex-direction: column; gap: 10px; }
       .hero { text-align: center; padding: 40px 0; }
@@ -519,12 +672,24 @@
       .full-width { grid-column: span 1; }
       .about-me { flex-direction: column; text-align: center; padding: 30px; }
       .discount-banner { flex-direction: column; text-align: center; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .discount-actions { flex-wrap: wrap; justify-content: center; }
     }
   </style>
 </head>
 <body>
 
 <button id="scrollTopBtn" aria-label="Наверх"><i class="fas fa-arrow-up"></i></button>
+
+<!-- Плавающие кнопки связи (для мобильных) -->
+<div style="position:fixed; bottom:90px; right:20px; z-index:998; display:flex; flex-direction:column; gap:10px;">
+  <a href="https://t.me/a_fanisovich" target="_blank" rel="noopener" style="background:#2563eb; color:white; width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(37,99,235,0.4); text-decoration:none;">
+    <i class="fab fa-telegram-plane fa-xl"></i>
+  </a>
+  <a href="tel:+79539995298" style="background:#10b981; color:white; width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(16,185,129,0.4); text-decoration:none;" title="Позвонить +7 (953) 999-52-98">
+    <i class="fas fa-phone-alt fa-lg"></i>
+  </a>
+</div>
 
 <div class="exit-popup" id="exitPopup">
   <div class="popup-content">
@@ -540,7 +705,10 @@
     <header class="header">
       <div class="logo"><i class="fas fa-gem" style="margin-right: 8px;"></i>Гранит Науки</div>
       <nav class="contacts-top">
-        <a href="tel:+79539995298"><i class="fas fa-phone-alt"></i> +7 (953) 999-52-98</a>
+        <!-- Номер телефона скрыт под иконкой -->
+        <a href="tel:+79539995298" class="phone-icon-link" title="Позвонить +7 (953) 999-52-98">
+          <i class="fas fa-phone-alt"></i>
+        </a>
         <a href="https://t.me/a_fanisovich" class="btn-outline" target="_blank" rel="noopener"><i class="fab fa-telegram-plane"></i> Telegram</a>
       </nav>
     </header>
@@ -566,7 +734,6 @@
       <div class="hero-image">
         <img src="hero-image.png.jpg" alt="Твой ключ к успеху" style="width: 100%; height: auto; border-radius: 20px; display: block;">
       </div>
-      
     </section>
 
     <div class="discount-banner">
@@ -574,28 +741,31 @@
         <h3>Скидка 15% на первый заказ</h3>
         <p style="margin-top: 5px; font-size: 1.1rem;">Действует при заказе от 2000 ₽</p>
       </div>
-      <div class="discount-badge">Промокод: GRANIT15</div>
+      <div class="discount-actions">
+        <div class="discount-badge" id="promoCodeBadge" title="Нажмите, чтобы скопировать промокод">Промокод: GRANIT15</div>
+        <button id="shareDiscountBtn" class="btn-outline" style="white-space: nowrap;"><i class="fas fa-share-alt"></i> Поделиться</button>
+      </div>
     </div>
 
     <section style="padding: 60px 0;">
       <h2 class="section-title">Почему выбирают нас</h2>
       <div class="grid-container">
-        <div class="card text-center">
+        <div class="card text-center fade-up">
           <div class="feature-icon"><i class="fas fa-bolt"></i></div>
           <h3 style="margin-bottom:10px;">Сжатые сроки</h3>
           <p class="text-muted">Реферат за 1 день, курсовая от 3 дней. Оперативно без потери качества.</p>
         </div>
-        <div class="card text-center">
+        <div class="card text-center fade-up">
           <div class="feature-icon"><i class="fas fa-lock"></i></div>
           <h3 style="margin-bottom:10px;">Конфиденциальность</h3>
           <p class="text-muted">Никто не узнает, что работу писали не вы. Полная анонимность.</p>
         </div>
-        <div class="card text-center">
+        <div class="card text-center fade-up">
           <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
           <h3 style="margin-bottom:10px;">Сопровождение</h3>
           <p class="text-muted">Бесплатные правки и поддержка вплоть до успешной защиты.</p>
         </div>
-        <div class="card text-center">
+        <div class="card text-center fade-up">
           <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
           <h3 style="margin-bottom:10px;">Уникальность 80%+</h3>
           <p class="text-muted">Строгая проверка в Антиплагиат.ВУЗ, отчет прилагается к работе.</p>
@@ -603,12 +773,10 @@
       </div>
     </section>
 
-    <div class="about-me">
-      
+    <div class="about-me fade-up">
       <div class="about-photo">
         <img src="my-photo.jpg.jpg" alt="Адель Фанисович - автор студенческих работ">
       </div>
-      
       <div class="about-text">
         <h3 style="font-size: 2rem; margin-bottom: 15px;">👋 Давайте знакомиться</h3>
         <p style="margin-bottom: 15px;">Меня зовут Адель Фанисович. Я профессионально помогаю студентам уже более 7 лет. Все работы пишу лично, без посредников, нейросетей и шаблонов.</p>
@@ -616,6 +784,151 @@
         <p><a href="https://t.me/a_fanisovich" target="_blank" rel="noopener" style="color:var(--primary); text-decoration:none; font-weight:600;"><i class="fab fa-telegram"></i> Написать мне напрямую</a></p>
       </div>
     </div>
+
+    <!-- НОВЫЙ БЛОК С 15 ОТЗЫВАМИ (с фото людей) -->
+    <section style="margin: 60px 0;">
+      <h2 class="section-title">Что говорят клиенты</h2>
+      <div class="reviews-grid" id="reviewsGrid">
+        <!-- 1 -->
+        <div class="review-card fade-up">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop" alt="Анна М." loading="lazy">
+            <div class="review-info"><h4>Анна М.</h4><div class="review-role">мама школьника</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Сын не успевал с рефератом по истории, Адель сделал за день. Грамотно, с иллюстрациями. Спасибо огромное!</div>
+        </div>
+        <!-- 2 -->
+        <div class="review-card fade-up">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop" alt="Иван П." loading="lazy">
+            <div class="review-info"><h4>Иван П.</h4><div class="review-role">студент колледжа</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Заказывал курсовую по электротехнике. Всё чётко, схемы правильные. Адель всегда на связи, пояснил непонятные моменты.</div>
+        </div>
+        <!-- 3 -->
+        <div class="review-card fade-up">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108755-2616c24133cb?w=150&h=150&fit=crop" alt="Елена К." loading="lazy">
+            <div class="review-info"><h4>Елена К.</h4><div class="review-role">студентка вуза</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Диплом по психологии — это было спасение! Уникальность 87%, защитилась на 5. Адель, низкий поклон!</div>
+        </div>
+        <!-- 4 -->
+        <div class="review-card fade-up">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop" alt="Сергей В." loading="lazy">
+            <div class="review-info"><h4>Сергей В.</h4><div class="review-role">родитель</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Дочке нужна была курсовая по экономике. Адель сделал быстро, преподаватель похвалил. Будем обращаться ещё.</div>
+        </div>
+        <!-- 5 -->
+        <div class="review-card fade-up">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop" alt="Мария Л." loading="lazy">
+            <div class="review-info"><h4>Мария Л.</h4><div class="review-role">школьница 11 кл.</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Проект по биологии сделали за 2 дня! Очень довольна, учитель даже не поверил, что я сама 😊 Спасибо Аделю!</div>
+        </div>
+        <!-- 6 -->
+        <div class="review-card fade-up">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop" alt="Дмитрий К." loading="lazy">
+            <div class="review-info"><h4>Дмитрий К.</h4><div class="review-role">студент магистратуры</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Статья ВАК по юриспруденции. Очень сложная тема, но Адель справился блестяще. Рекомендую!</div>
+        </div>
+        <!-- 7 -->
+        <div class="review-card fade-up">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop" alt="Ольга С." loading="lazy">
+            <div class="review-info"><h4>Ольга С.</h4><div class="review-role">студентка медколледжа</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Реферат по анатомии просто супер! Всё по ГОСТу, свежие источники. Адель, спасибо, выручили в сессию.</div>
+        </div>
+        <!-- 8 -->
+        <div class="review-card fade-up">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=150&h=150&fit=crop" alt="Алексей Н." loading="lazy">
+            <div class="review-info"><h4>Алексей Н.</h4><div class="review-role">родитель</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Сын завалил курсовую, пересдача горела. Адель переписал работу за 4 дня. Сын сдал на 4, хотя уже не надеялись.</div>
+        </div>
+        <!-- 9 -->
+        <div class="review-card fade-up hidden-review">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop" alt="Татьяна М." loading="lazy">
+            <div class="review-info"><h4>Татьяна М.</h4><div class="review-role">студентка ВШЭ</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Очень требовательный вуз, но Адель учёл все нюансы. Диплом защищён на отлично. Спасибо за профессионализм!</div>
+        </div>
+        <!-- 10 -->
+        <div class="review-card fade-up hidden-review">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=150&h=150&fit=crop" alt="Руслан Г." loading="lazy">
+            <div class="review-info"><h4>Руслан Г.</h4><div class="review-role">студент техникума</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Отчёт по практике по электрике. Всё подробно расписано, дневник заполнен. Быстро и недорого. Адель, респект!</div>
+        </div>
+        <!-- 11 -->
+        <div class="review-card fade-up hidden-review">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=150&h=150&fit=crop" alt="Виктория П." loading="lazy">
+            <div class="review-info"><h4>Виктория П.</h4><div class="review-role">мама двоих школьников</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Обоим сыновьям нужны были рефераты по разным предметам. Адель сделал оба за 2 дня. Очень выручили, спасибо!</div>
+        </div>
+        <!-- 12 -->
+        <div class="review-card fade-up hidden-review">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1508341591423-4347099e1f19?w=150&h=150&fit=crop" alt="Кирилл С." loading="lazy">
+            <div class="review-info"><h4>Кирилл С.</h4><div class="review-role">студент-заочник</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Контрольная по высшей математике. Решили быстро, с пояснениями. Очень доволен. Адель — мастер своего дела!</div>
+        </div>
+        <!-- 13 -->
+        <div class="review-card fade-up hidden-review">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=150&h=150&fit=crop" alt="Наталья Н." loading="lazy">
+            <div class="review-info"><h4>Наталья Н.</h4><div class="review-role">студентка РАНХиГС</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Курсовая по госзакупкам. Сложная тема, но Адель разобрался. Оригинальность высокая. Рекомендую!</div>
+        </div>
+        <!-- 14 -->
+        <div class="review-card fade-up hidden-review">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=150&h=150&fit=crop" alt="Артём А." loading="lazy">
+            <div class="review-info"><h4>Артём А.</h4><div class="review-role">выпускник школы</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Итоговый проект по обществознанию. Адель помог с материалом и оформлением. Защитился на 5. Спасибо!</div>
+        </div>
+        <!-- 15 -->
+        <div class="review-card fade-up hidden-review">
+          <div class="review-header">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop" alt="Лариса В." loading="lazy">
+            <div class="review-info"><h4>Лариса В.</h4><div class="review-role">родитель</div></div>
+          </div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Сын провалил курсовую, нужна была срочная переделка. Адель взялся и сделал за выходные. Огромное спасибо!</div>
+        </div>
+      </div>
+      <div class="show-more-btn">
+        <button class="btn-outline" id="showMoreReviews" style="min-width: 200px;">Показать ещё отзывы</button>
+      </div>
+    </section>
 
     <section id="pricing" style="padding-top: 40px;">
       <h2 class="section-title">Стоимость работ</h2>
@@ -625,7 +938,7 @@
       </div>
 
       <div class="grid-container">
-        <div class="card pricing-card">
+        <div class="card pricing-card fade-up">
           <h3 style="font-size: 1.5rem;">Реферат</h3>
           <div class="pricing-price">от 990 ₽ <span class="pricing-old-price">1500 ₽</span></div>
           <ul class="pricing-features">
@@ -635,7 +948,7 @@
           </ul>
           <a href="#order" class="btn-outline">Заказать</a>
         </div>
-        <div class="card pricing-card popular">
+        <div class="card pricing-card popular fade-up">
           <span class="pricing-badge">Хит продаж</span>
           <h3 style="font-size: 1.5rem;">Курсовая</h3>
           <div class="pricing-price">от 2490 ₽ <span class="pricing-old-price">3500 ₽</span></div>
@@ -646,7 +959,7 @@
           </ul>
           <a href="#order" class="btn-primary" style="text-align:center;">Заказать со скидкой</a>
         </div>
-        <div class="card pricing-card">
+        <div class="card pricing-card fade-up">
           <h3 style="font-size: 1.5rem;">Диплом</h3>
           <div class="pricing-price">от 8990 ₽ <span class="pricing-old-price">12000 ₽</span></div>
           <ul class="pricing-features">
@@ -659,7 +972,28 @@
       </div>
     </section>
 
-    <section class="order-form" id="order">
+    <!-- FAQ-блок -->
+    <section style="margin: 60px 0;">
+      <h2 class="section-title">Часто задаваемые вопросы</h2>
+      <div class="faq-item">
+        <div class="faq-question">Как происходит оплата? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Работаем по частичной предоплате (30-50%) на карту. Остаток — после получения готовой работы и проверки.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Какие гарантии качества? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Предоставляю отчёт из Антиплагиат.ВУЗ. Бесплатные правки в рамках оговорённого задания.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Можно ли срочно? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Да, реферат могу сделать за 1 день, курсовую — от 3 дней. Стоимость срочного заказа обсуждается индивидуально.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Вы работаете с моим вузом/городом? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Да, работаю онлайн со студентами из любых городов России и СНГ. Ориентируюсь на ваши методички.</div>
+      </div>
+    </section>
+
+    <section class="order-form fade-up" id="order">
       <h2 class="section-title" style="margin-top: 0; margin-bottom: 10px;">📋 Оставить заявку</h2>
       <p style="text-align: center; margin-bottom: 40px; color: var(--text-muted);">Опишите задачу, и я свяжусь с вами в Telegram для расчета точной стоимости.</p>
       
@@ -736,12 +1070,103 @@
     document.getElementById('timer').textContent = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
   }, 1000);
 
-  // Отправка формы
+  // Копирование промокода
+  const promoBadge = document.getElementById('promoCodeBadge');
+  if (promoBadge) {
+    promoBadge.addEventListener('click', () => {
+      const code = 'GRANIT15';
+      navigator.clipboard?.writeText(code).then(() => {
+        alert(`Промокод ${code} скопирован!`);
+      }).catch(() => {
+        prompt('Скопируйте промокод вручную:', code);
+      });
+    });
+  }
+
+  // Кнопка "Поделиться скидкой"
+  document.getElementById('shareDiscountBtn').addEventListener('click', () => {
+    const shareText = `🎓 Скидка 15% на реферат, курсовую или диплом! Промокод GRANIT15. Переходи: ${window.location.href}`;
+    if (navigator.share) {
+      navigator.share({
+        title: 'Гранит Науки',
+        text: shareText,
+      }).catch(() => {});
+    } else {
+      prompt('Скопируйте текст и отправьте другу:', shareText);
+    }
+  });
+
+  // Маска телефона (упрощённая)
+  const contactInput = document.getElementById('contact');
+  if (contactInput) {
+    contactInput.addEventListener('input', function() {
+      let value = this.value.replace(/\D/g, '');
+      if (value.startsWith('7') || value.startsWith('8')) {
+        if (value.length > 1) value = value.slice(1);
+      }
+      if (value.length > 10) value = value.slice(0, 10);
+      let formatted = '+7 ';
+      if (value.length > 0) formatted += value.slice(0, 3);
+      if (value.length > 3) formatted += ' ' + value.slice(3, 6);
+      if (value.length > 6) formatted += ' ' + value.slice(6, 8);
+      if (value.length > 8) formatted += ' ' + value.slice(8, 10);
+      this.value = formatted.trim();
+    });
+  }
+
+  // Отправка формы с валидацией
   document.getElementById('taskForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const text = `🔥 *Новая заявка*\n👤 Имя: ${document.getElementById('name').value}\n📱 Связь: ${document.getElementById('contact').value}\n📚 Тип: ${document.getElementById('workType').value}\n📌 Тема: ${document.getElementById('topic').value}\n📝 Детали: ${document.getElementById('description').value}`;
+    const name = document.getElementById('name').value.trim();
+    const contact = document.getElementById('contact').value.trim();
+    const workType = document.getElementById('workType').value;
+    const topic = document.getElementById('topic').value.trim();
+    const description = document.getElementById('description').value.trim();
+    
+    if (!name || !contact) {
+      alert('Пожалуйста, укажите имя и контакт для связи (Telegram или телефон)');
+      return;
+    }
+    
+    const text = `🔥 *Новая заявка*\n👤 Имя: ${name}\n📱 Связь: ${contact}\n📚 Тип: ${workType}\n📌 Тема: ${topic || '—'}\n📝 Детали: ${description || '—'}`;
     window.open(`https://t.me/a_fanisovich?text=${encodeURIComponent(text)}`, '_blank');
+    alert('Заявка отправлена! Сейчас откроется Telegram.');
   });
+
+  // FAQ аккордеон
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+      const faqItem = question.closest('.faq-item');
+      faqItem.classList.toggle('active');
+    });
+  });
+
+  // Показать ещё отзывы
+  const showMoreBtn = document.getElementById('showMoreReviews');
+  const reviewsGrid = document.getElementById('reviewsGrid');
+  let expanded = false;
+  showMoreBtn.addEventListener('click', () => {
+    if (!expanded) {
+      reviewsGrid.classList.add('expanded');
+      showMoreBtn.textContent = 'Скрыть отзывы';
+    } else {
+      reviewsGrid.classList.remove('expanded');
+      showMoreBtn.textContent = 'Показать ещё отзывы';
+    }
+    expanded = !expanded;
+  });
+
+  // Анимация появления блоков при скролле
+  const animatedElements = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  animatedElements.forEach(el => observer.observe(el));
 </script>
 
 </body>
