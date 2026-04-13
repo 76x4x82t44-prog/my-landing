@@ -35,7 +35,7 @@
     }
 
     html {
-      scroll-behavior: smooth; /* Нативная плавная прокрутка */
+      scroll-behavior: smooth;
     }
 
     body {
@@ -198,12 +198,6 @@
       padding: 20px;
       text-align: center;
       box-shadow: 0 25px 50px -12px rgba(0,0,0,0.1);
-    }
-
-    .hero-image svg {
-      width: 100%;
-      height: auto;
-      border-radius: 20px;
     }
 
     /* Скидки */
@@ -446,7 +440,7 @@
       transform: rotate(180deg);
     }
 
-    /* Модалки и кнопки */
+    /* Кнопка наверх */
     #scrollTopBtn {
       position: fixed;
       bottom: 30px;
@@ -476,6 +470,7 @@
 
     #scrollTopBtn:hover { transform: scale(1.1); }
 
+    /* Попап */
     .exit-popup {
       position: fixed;
       inset: 0;
@@ -567,15 +562,11 @@
           <div class="stat-item"><span class="stat-number">98%</span><span class="stat-label">сдали с 1-го раза</span></div>
         </div>
       </div>
+      
       <div class="hero-image">
-        <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-          <rect width="400" height="300" fill="#dbeafe" rx="20"/>
-          <circle cx="200" cy="110" r="60" fill="#fbbf24"/>
-          <rect x="140" y="170" width="120" height="80" fill="#3b82f6" rx="10"/>
-          <text x="200" y="220" font-size="24" fill="white" text-anchor="middle" font-weight="bold">📚</text>
-          <text x="200" y="270" font-size="16" fill="#1e293b" text-anchor="middle" font-family="system-ui">Твой ключ к успеху</text>
-        </svg>
+        <img src="hero-image.png.jpg" alt="Твой ключ к успеху" style="width: 100%; height: auto; border-radius: 20px; display: block;">
       </div>
+      
     </section>
 
     <div class="discount-banner">
@@ -613,9 +604,11 @@
     </section>
 
     <div class="about-me">
+      
       <div class="about-photo">
-        <img src="adel.jpg" alt="Адель Фанисович - автор студенческих работ" onerror="this.src='https://ui-avatars.com/api/?name=Адель+Ф&background=2563eb&color=fff&size=200'">
+        <img src="my-photo.jpg.jpg" alt="Адель Фанисович - автор студенческих работ">
       </div>
+      
       <div class="about-text">
         <h3 style="font-size: 2rem; margin-bottom: 15px;">👋 Давайте знакомиться</h3>
         <p style="margin-bottom: 15px;">Меня зовут Адель Фанисович. Я профессионально помогаю студентам уже более 7 лет. Все работы пишу лично, без посредников, нейросетей и шаблонов.</p>
@@ -666,27 +659,9 @@
       </div>
     </section>
 
-    <section style="padding: 40px 0;">
-      <h2 class="section-title">Частые вопросы</h2>
-      <div style="max-width: 800px; margin: 0 auto;">
-        <div class="faq-item active">
-          <div class="faq-question">Как происходит оплата? <i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer"><p>Работаем по безопасной частичной предоплате (30-50%) на карту банка. Оставшаяся сумма оплачивается только после того, как вы получите готовую работу и убедитесь в её качестве.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">Какие гарантии качества? <i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer"><p>К каждой работе бесплатно предоставляю подробный отчёт из системы Антиплагиат.ВУЗ. Если ваш научный руководитель внесет корректировки — я исправлю работу бесплатно.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">Можно ли сделать работу срочно? <i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer"><p>Да! Реферат или эссе могу написать за 1 сутки, курсовую — от 2-3 дней в зависимости от сложности. Наценка за срочность обсуждается индивидуально.</p></div>
-        </div>
-      </div>
-    </section>
-
     <section class="order-form" id="order">
       <h2 class="section-title" style="margin-top: 0; margin-bottom: 10px;">📋 Оставить заявку</h2>
-      <p style="text-align: center; margin-bottom: 40px; color: var(--text-muted);">Опишите задачу, и я свяжусь с вами в Telegram для расчета точной стоимости (обычно отвечаю за 10-15 минут).</p>
+      <p style="text-align: center; margin-bottom: 40px; color: var(--text-muted);">Опишите задачу, и я свяжусь с вами в Telegram для расчета точной стоимости.</p>
       
       <form id="taskForm">
         <div class="form-grid">
@@ -714,11 +689,10 @@
           </div>
           <div class="form-group full-width">
             <label for="description">Требования (ВУЗ, антиплагиат, сроки)</label>
-            <textarea id="description" rows="4" placeholder="Например: МГУ, 30 страниц, оригинальность от 80%, сдать нужно к пятнице..."></textarea>
+            <textarea id="description" rows="4" placeholder="МГУ, 30 страниц, оригинальность от 80%..."></textarea>
           </div>
           <div class="form-group full-width">
             <button type="submit" class="btn-primary" style="width: 100%; font-size: 1.2rem; padding: 18px;"><i class="fab fa-telegram-plane"></i> Отправить в Telegram</button>
-            <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; color: #94a3b8;">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
           </div>
         </div>
       </form>
@@ -728,124 +702,45 @@
 
 <footer>
   <div class="container">
-    <div style="font-size: 1.5rem; margin-bottom: 20px;">
-      <a href="https://t.me/a_fanisovich" target="_blank" rel="noopener" style="color: var(--text-muted); margin: 0 10px; transition: 0.3s;"><i class="fab fa-telegram"></i></a>
-      <a href="tel:+79539995298" style="color: var(--text-muted); margin: 0 10px; transition: 0.3s;"><i class="fas fa-phone"></i></a>
-    </div>
     <p>© 2024-2026 «Гранит Науки». Помощь студентам.</p>
-    <p style="font-size: 0.9rem; margin-top: 10px;">ИП Фанисович А.А. | ИНН 1234567890</p>
   </div>
 </footer>
 
 <script>
-  // 1. Кнопка "Наверх"
+  // Кнопка наверх
   const scrollBtn = document.getElementById('scrollTopBtn');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-      scrollBtn.classList.add('visible');
-    } else {
-      scrollBtn.classList.remove('visible');
-    }
+    if (window.scrollY > 400) scrollBtn.classList.add('visible');
+    else scrollBtn.classList.remove('visible');
   });
-  scrollBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  // 2. Умный Exit-Popup (показывается только 1 раз за сессию)
+  // Exit Popup
   const popup = document.getElementById('exitPopup');
-  let popupTriggered = sessionStorage.getItem('popupShown');
-
-  const showPopup = () => {
-    if (!popupTriggered) {
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY <= 0 && !sessionStorage.getItem('popupShown')) {
       popup.classList.add('show');
       sessionStorage.setItem('popupShown', 'true');
-      popupTriggered = true;
     }
-  };
-
-  document.addEventListener('mouseleave', (e) => {
-    if (e.clientY <= 0) showPopup();
   });
-
   document.getElementById('closePopup').addEventListener('click', () => popup.classList.remove('show'));
-  document.getElementById('popupCtaBtn').addEventListener('click', () => {
-    popup.classList.remove('show');
-    document.querySelector('#order').scrollIntoView({ behavior: 'smooth' });
-  });
+  document.getElementById('popupCtaBtn').addEventListener('click', () => popup.classList.remove('show'));
 
-  // 3. Честный счетчик работ (сохраняет значение)
-  let worksCount = parseInt(localStorage.getItem('worksCount')) || 854;
-  document.getElementById('worksCounter').textContent = worksCount;
-  
-  // Имитация редких заказов (прибавляет 1 раз в 1-3 часа, выглядит реалистично)
+  // Таймер
+  let endTime = localStorage.getItem('offerEndTime') || (Date.now() + 86400000);
+  localStorage.setItem('offerEndTime', endTime);
   setInterval(() => {
-    if(Math.random() > 0.7) { 
-      worksCount++;
-      localStorage.setItem('worksCount', worksCount);
-      document.getElementById('worksCounter').textContent = worksCount;
-    }
-  }, 3600000); 
+    const diff = endTime - Date.now();
+    if (diff <= 0) return;
+    let h = Math.floor(diff / 3600000), m = Math.floor((diff % 3600000) / 60000), s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('timer').textContent = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+  }, 1000);
 
-  // 4. Честный таймер акции (привязан к пользователю на 24 часа)
-  const timerDisplay = document.getElementById('timer');
-  let endTime = localStorage.getItem('offerEndTime');
-  
-  if (!endTime || endTime < Date.now()) {
-    // Устанавливаем таймер на 24 часа от текущего момента
-    endTime = Date.now() + 24 * 60 * 60 * 1000;
-    localStorage.setItem('offerEndTime', endTime);
-  }
-
-  const updateTimer = () => {
-    const now = Date.now();
-    const diff = endTime - now;
-
-    if (diff <= 0) {
-      timerDisplay.textContent = "Акция завершена";
-      return;
-    }
-
-    let h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    let m = Math.floor((diff / 1000 / 60) % 60);
-    let s = Math.floor((diff / 1000) % 60);
-
-    timerDisplay.textContent = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-  };
-  
-  updateTimer();
-  setInterval(updateTimer, 1000);
-
-  // 5. FAQ аккордеон
-  document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', () => {
-      const item = question.closest('.faq-item');
-      // Закрываем другие
-      document.querySelectorAll('.faq-item').forEach(faq => {
-        if(faq !== item) faq.classList.remove('active');
-      });
-      item.classList.toggle('active');
-    });
-  });
-
-  // 6. Форма заказа в Telegram (с кодированием URL-символов)
+  // Отправка формы
   document.getElementById('taskForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const contact = document.getElementById('contact').value.trim();
-    const workType = document.getElementById('workType').value;
-    const topic = document.getElementById('topic').value.trim() || 'Не указана';
-    const desc = document.getElementById('description').value.trim() || 'Нет описания';
-
-    // Используем encodeURIComponent для безопасной передачи текста
-    const text = `🔥 *Новая заявка с сайта*\n\n` +
-                 `👤 *Имя:* ${name}\n` +
-                 `📱 *Связь:* ${contact}\n` +
-                 `📚 *Тип:* ${workType}\n` +
-                 `📌 *Тема:* ${topic}\n` +
-                 `📝 *Детали:* ${desc}`;
-
-    const telegramUrl = `https://t.me/a_fanisovich?text=${encodeURIComponent(text)}`;
-    window.open(telegramUrl, '_blank');
+    const text = `🔥 *Новая заявка*\n👤 Имя: ${document.getElementById('name').value}\n📱 Связь: ${document.getElementById('contact').value}\n📚 Тип: ${document.getElementById('workType').value}\n📌 Тема: ${document.getElementById('topic').value}\n📝 Детали: ${document.getElementById('description').value}`;
+    window.open(`https://t.me/a_fanisovich?text=${encodeURIComponent(text)}`, '_blank');
   });
 </script>
 
