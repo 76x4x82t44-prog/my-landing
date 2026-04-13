@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Ваш Лендинг | Название услуги</title>
+    <style>
+        /* Сброс отступов и базовые настройки */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background-color: #faf9f6;
+            color: #1e1e1e;
+            line-height: 1.5;
+        }
+
+        /* Контейнер, чтобы контент не разъезжался на широких экранах */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Шапка */
+        header {
+            padding: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+            color: #2c3e50;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #2c3e50;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #2c3e50;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: #2c3e50;
+            color: white;
+        }
+
+        /* Главный экран (Hero) */
+        .hero {
+            padding: 60px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-content {
+            flex: 1 1 350px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 8vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            color: #1a252f;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: #e67e22;
+            color: white;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 20px rgba(230, 126, 34, 0.2);
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(230, 126, 34, 0.3);
+        }
+
+        .hero-image {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+        }
+
+        /* Секция преимуществ */
+        .features {
+            padding: 60px 0;
+            background: white;
+            border-radius: 40px 40px 0 0;
+            margin-top: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            color: #1e293b;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 20px 15px;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .feature-card p {
+            color: #475569;
+        }
+
+        /* Блок с отзывами / соцдоказательство */
+        .testimonial {
+            background: #f1f5f9;
+            padding: 60px 20px;
+            border-radius: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .testimonial blockquote {
+            font-size: 1.8rem;
+            font-weight: 500;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #0f172a;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+        }
+
+        .author {
+            font-weight: 600;
+            color: #334155;
+        }
+
+        /* Блок призыва к действию (CTA) */
+        .cta {
+            padding: 70px 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #475569;
+        }
+
+        /* Подвал */
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 700px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .testimonial blockquote {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Шапка -->
+    <header>
+        <div class="logo">☕ AromaSpace</div>
+        <a href="#contact" class="btn-outline">Связаться</a>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Вкус, который запоминается</h1>
+            <p>Свежая обжарка кофе с доставкой на дом. Попробуйте новый уровень утреннего ритуала.</p>
+            <a href="#cta" class="btn-primary">Попробовать со скидкой</a>
+        </div>
+        <div class="hero-image">
+            <!-- SVG-заглушка с чашкой кофе (можно заменить на свою картинку) -->
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f3e8e0'/%3E%3Ccircle cx='200' cy='130' r='70' fill='%23d9b382'/%3E%3Cpath d='M160 180 Q200 230 240 180 L230 200 Q200 240 170 200 Z' fill='%238b5e3c'/%3E%3Cpath d='M130 120 Q160 100 190 120' stroke='%23e6d5c3' stroke-width='12' fill='none' stroke-linecap='round'/%3E%3Ctext x='200' y='220' font-family='system-ui' font-size='18' fill='%235d4037' text-anchor='middle' font-weight='bold'%3E☕%3C/text%3E%3C/svg%3E"
+                 alt="Чашка ароматного кофе" style="width:100%; max-width:400px;">
+        </div>
+    </section>
+</div>
+
+<!-- Преимущества -->
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">Почему выбирают нас</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌱</div>
+                <h3>100% арабика</h3>
+                <p>Только спелые зёрна с горных плантаций. Мягкий вкус без горечи.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔥</div>
+                <h3>Обжарка под заказ</h3>
+                <p>Жарим небольшими партиями в день отправки — вы получаете пик вкуса.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3>Бесплатная доставка</h3>
+                <p>При заказе от 1500 ₽ привезём кофе прямо к двери в удобное время.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Отзыв -->
+<div class="container">
+    <section class="testimonial">
+        <div class="stars">★★★★★</div>
+        <blockquote>«Этот кофе реально пахнет на всю квартиру. Пью теперь только его, даже в офис заказал»</blockquote>
+        <div class="author">— Анна К., владелица цветочной мастерской</div>
+    </section>
+</div>
+
+<!-- Призыв к действию (форма обратной связи упрощённая) -->
+<section class="cta" id="cta">
+    <div class="container">
+        <h2>Готовы к ароматному утру?</h2>
+        <p>Оставьте контакты — мы пришлём пробный набор со скидкой 20% на первый заказ.</p>
+        <!-- Вместо сложной формы кнопка-ссылка в мессенджер (имитация) -->
+        <a href="#" class="btn-primary" onclick="alert('В реальном лендинге здесь была бы ссылка на WhatsApp / Telegram / форму. Замените ссылку в коде!'); return false;">Хочу скидку →</a>
+        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">Нажимая, вы соглашаетесь на обработку данных.</p>
+    </div>
+</section>
+
+<!-- Подвал -->
+<footer>
+    <div class="container">
+        <p>© 2026 AromaSpace. Шаблон одностраничного лендинга.</p>
+        <p style="margin-top: 10px;">📧 hello@aromaspace.demo | 📞 +7 (999) 123-45-67</p>
+    </div>
+</footer>
+
+<script>
+    // Небольшой скрипт для плавной прокрутки к якорям (чтобы кнопки работали красиво)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === "#" || href === "") return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
