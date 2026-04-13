@@ -1,327 +1,582 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Ваш Лендинг | Название услуги</title>
-    <style>
-        /* Сброс отступов и базовые настройки */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>СтудентХелп — рефераты, курсовые, дипломы</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3135/3135810.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+    }
 
-        body {
-            background-color: #faf9f6;
-            color: #1e1e1e;
-            line-height: 1.5;
-        }
+    body {
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.6;
+    }
 
-        /* Контейнер, чтобы контент не разъезжался на широких экранах */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-        /* Шапка */
-        header {
-            padding: 20px 0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #eaeaea;
-        }
+    /* Шапка */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid #e2e8f0;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: -0.5px;
-            color: #2c3e50;
-        }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-        .btn-outline {
-            background: transparent;
-            border: 1.5px solid #2c3e50;
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            color: #2c3e50;
-            text-decoration: none;
-            transition: 0.2s;
-        }
+    .contacts-top {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
 
-        .btn-outline:hover {
-            background: #2c3e50;
-            color: white;
-        }
+    .contacts-top a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1e293b;
+      transition: color 0.2s;
+    }
 
-        /* Главный экран (Hero) */
-        .hero {
-            padding: 60px 0;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 40px;
-        }
+    .contacts-top a:hover {
+      color: #2563eb;
+    }
 
-        .hero-content {
-            flex: 1 1 350px;
-        }
+    .btn-outline {
+      border: 2px solid #2563eb;
+      background: transparent;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #2563eb;
+      text-decoration: none;
+      transition: 0.2s;
+    }
 
-        .hero h1 {
-            font-size: clamp(2.4rem, 8vw, 3.8rem);
-            font-weight: 800;
-            line-height: 1.2;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
-            color: #1a252f;
-        }
+    .btn-outline:hover {
+      background: #2563eb;
+      color: white;
+    }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: #4a5568;
-            margin-bottom: 30px;
-            max-width: 500px;
-        }
+    /* Hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      padding: 60px 0;
+      flex-wrap: wrap;
+    }
 
-        .btn-primary {
-            display: inline-block;
-            background: #e67e22;
-            color: white;
-            font-weight: 600;
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            box-shadow: 0 8px 20px rgba(230, 126, 34, 0.2);
-            transition: 0.2s;
-            border: none;
-            cursor: pointer;
-        }
+    .hero-content {
+      flex: 1 1 400px;
+    }
 
-        .btn-primary:hover {
-            background: #d35400;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(230, 126, 34, 0.3);
-        }
+    .hero h1 {
+      font-size: clamp(2.6rem, 8vw, 4rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #0f172a, #334155);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-        .hero-image {
-            flex: 1 1 300px;
-            text-align: center;
-        }
+    .hero p {
+      font-size: 1.25rem;
+      color: #475569;
+      margin-bottom: 30px;
+    }
 
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 24px;
-            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
-        }
+    .btn-primary {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 60px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s;
+      border: none;
+      margin-right: 15px;
+      margin-bottom: 10px;
+    }
 
-        /* Секция преимуществ */
-        .features {
-            padding: 60px 0;
-            background: white;
-            border-radius: 40px 40px 0 0;
-            margin-top: 20px;
-        }
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-3px);
+      box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
+    }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 50px;
-            color: #1e293b;
-        }
+    .hero-stats {
+      display: flex;
+      gap: 30px;
+      margin-top: 40px;
+    }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 30px;
-        }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
 
-        .feature-card {
-            text-align: center;
-            padding: 20px 15px;
-        }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
 
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
+    .stat-label {
+      color: #64748b;
+    }
 
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
+    .hero-image {
+      flex: 1 1 300px;
+      background: linear-gradient(145deg, #dbeafe, #ede9fe);
+      border-radius: 30px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+    }
 
-        .feature-card p {
-            color: #475569;
-        }
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 20px;
+    }
 
-        /* Блок с отзывами / соцдоказательство */
-        .testimonial {
-            background: #f1f5f9;
-            padding: 60px 20px;
-            border-radius: 40px;
-            margin: 40px 0;
-            text-align: center;
-        }
+    /* Секции */
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 50px;
+      color: #0f172a;
+    }
 
-        .testimonial blockquote {
-            font-size: 1.8rem;
-            font-weight: 500;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            color: #0f172a;
-        }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+    }
 
-        .stars {
-            color: #fbbf24;
-            font-size: 1.5rem;
-            letter-spacing: 5px;
-        }
+    .feature-card {
+      background: white;
+      padding: 30px 20px;
+      border-radius: 24px;
+      box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+      text-align: center;
+      border: 1px solid #f1f5f9;
+    }
 
-        .author {
-            font-weight: 600;
-            color: #334155;
-        }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05);
+    }
 
-        /* Блок призыва к действию (CTA) */
-        .cta {
-            padding: 70px 0;
-            text-align: center;
-        }
+    .feature-icon {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+    }
 
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
+    .feature-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #1e293b;
+    }
 
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: #475569;
-        }
+    .pricing-table {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
 
-        /* Подвал */
-        footer {
-            padding: 30px 0;
-            text-align: center;
-            border-top: 1px solid #e2e8f0;
-            color: #64748b;
-            font-size: 0.9rem;
-        }
+    .pricing-card {
+      background: white;
+      border-radius: 28px;
+      padding: 30px 25px;
+      flex: 1 1 260px;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+      transition: all 0.2s;
+    }
 
-        /* Адаптивность */
-        @media (max-width: 700px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-            .hero p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .testimonial blockquote {
-                font-size: 1.4rem;
-            }
-        }
-    </style>
+    .pricing-card:hover {
+      border-color: #2563eb;
+      box-shadow: 0 20px 25px -5px rgba(37,99,235,0.1);
+    }
+
+    .pricing-type {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .pricing-price {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 20px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 25px;
+    }
+
+    .pricing-features li {
+      padding: 8px 0;
+      border-bottom: 1px dashed #cbd5e1;
+    }
+
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+    }
+
+    .step {
+      text-align: center;
+      max-width: 200px;
+    }
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background: #2563eb;
+      color: white;
+      font-weight: bold;
+      font-size: 1.8rem;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      box-shadow: 0 10px 15px -3px rgba(37,99,235,0.3);
+    }
+
+    /* Отзывы */
+    .testimonials {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      flex: 1 1 280px;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+    }
+
+    .testimonial-text {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+    }
+
+    /* Форма */
+    .order-form {
+      background: white;
+      border-radius: 40px;
+      padding: 40px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.2);
+      margin: 60px 0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      font-size: 1rem;
+      transition: border 0.2s;
+      background: #fafafa;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      background: white;
+    }
+
+    .full-width {
+      grid-column: span 2;
+    }
+
+    .submit-btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: 0.2s;
+      width: 100%;
+      margin-top: 10px;
+      box-shadow: 0 8px 20px rgba(37,99,235,0.3);
+    }
+
+    .submit-btn:hover {
+      background: #1d4ed8;
+    }
+
+    .contact-block {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.3rem;
+    }
+
+    .contact-item a {
+      text-decoration: none;
+      color: #0f172a;
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: #64748b;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 40px;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 700px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .full-width {
+        grid-column: span 1;
+      }
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .hero-stats {
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Шапка -->
-    <header>
-        <div class="logo">☕ AromaSpace</div>
-        <a href="#contact" class="btn-outline">Связаться</a>
-    </header>
+  <!-- Шапка -->
+  <header class="header">
+    <div class="logo">🎓 СтудентХелп</div>
+    <div class="contacts-top">
+      <a href="tel:+79539995298">📞 +7 (953) 999-52-98</a>
+      <a href="https://t.me/a_fanisovich" class="btn-outline">💬 Telegram</a>
+    </div>
+  </header>
 
-    <!-- Главный экран -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Вкус, который запоминается</h1>
-            <p>Свежая обжарка кофе с доставкой на дом. Попробуйте новый уровень утреннего ритуала.</p>
-            <a href="#cta" class="btn-primary">Попробовать со скидкой</a>
-        </div>
-        <div class="hero-image">
-            <!-- SVG-заглушка с чашкой кофе (можно заменить на свою картинку) -->
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23f3e8e0'/%3E%3Ccircle cx='200' cy='130' r='70' fill='%23d9b382'/%3E%3Cpath d='M160 180 Q200 230 240 180 L230 200 Q200 240 170 200 Z' fill='%238b5e3c'/%3E%3Cpath d='M130 120 Q160 100 190 120' stroke='%23e6d5c3' stroke-width='12' fill='none' stroke-linecap='round'/%3E%3Ctext x='200' y='220' font-family='system-ui' font-size='18' fill='%235d4037' text-anchor='middle' font-weight='bold'%3E☕%3C/text%3E%3C/svg%3E"
-                 alt="Чашка ароматного кофе" style="width:100%; max-width:400px;">
-        </div>
-    </section>
+  <!-- Главный экран -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Реферат, курсовая, диплом — быстро и без стресса</h1>
+      <p>Помогаю студентам с 2018 года. Высокая уникальность, соблюдение сроков, поддержка до сдачи.</p>
+      <a href="#order" class="btn-primary">📝 Заказать работу</a>
+      <a href="https://t.me/a_fanisovich" class="btn-outline" style="margin-right:0;">💬 Спросить в Telegram</a>
+      <div class="hero-stats">
+        <div class="stat-item"><span class="stat-number">750+</span><span class="stat-label">выполненных работ</span></div>
+        <div class="stat-item"><span class="stat-number">98%</span><span class="stat-label">сдали с первого раза</span></div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23dbeafe'/%3E%3Ccircle cx='200' cy='110' r='60' fill='%23fbbf24'/%3E%3Crect x='140' y='170' width='120' height='80' fill='%233b82f6' rx='10'/%3E%3Ctext x='200' y='220' font-size='24' fill='white' text-anchor='middle' font-weight='bold'%3E📚%3C/text%3E%3C/svg%3E"
+           alt="Студент за учебой">
+    </div>
+  </section>
 </div>
 
 <!-- Преимущества -->
-<section class="features">
-    <div class="container">
-        <h2 class="section-title">Почему выбирают нас</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🌱</div>
-                <h3>100% арабика</h3>
-                <p>Только спелые зёрна с горных плантаций. Мягкий вкус без горечи.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔥</div>
-                <h3>Обжарка под заказ</h3>
-                <p>Жарим небольшими партиями в день отправки — вы получаете пик вкуса.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🚚</div>
-                <h3>Бесплатная доставка</h3>
-                <p>При заказе от 1500 ₽ привезём кофе прямо к двери в удобное время.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Отзыв -->
 <div class="container">
-    <section class="testimonial">
-        <div class="stars">★★★★★</div>
-        <blockquote>«Этот кофе реально пахнет на всю квартиру. Пью теперь только его, даже в офис заказал»</blockquote>
-        <div class="author">— Анна К., владелица цветочной мастерской</div>
-    </section>
+  <section style="padding: 60px 0;">
+    <h2 class="section-title">Почему выбирают меня</h2>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">⏱️</div><h3>Сжатые сроки</h3><p>Реферат за 1 день, курсовая от 3 дней. Работаю оперативно без потери качества.</p></div>
+      <div class="feature-card"><div class="feature-icon">🔒</div><h3>Конфиденциальность</h3><p>Никто не узнает, что работу писал не ты. Все данные только между нами.</p></div>
+      <div class="feature-card"><div class="feature-icon">🎓</div><h3>Сопровождение</h3><p>Бесплатные правки, пояснения к работе, помощь с защитой.</p></div>
+      <div class="feature-card"><div class="feature-icon">💯</div><h3>Уникальность 80%+</h3><p>Проверка в Антиплагиат.ВУЗ, отчет прилагаю.</p></div>
+    </div>
+  </section>
 </div>
 
-<!-- Призыв к действию (форма обратной связи упрощённая) -->
-<section class="cta" id="cta">
-    <div class="container">
-        <h2>Готовы к ароматному утру?</h2>
-        <p>Оставьте контакты — мы пришлём пробный набор со скидкой 20% на первый заказ.</p>
-        <!-- Вместо сложной формы кнопка-ссылка в мессенджер (имитация) -->
-        <a href="#" class="btn-primary" onclick="alert('В реальном лендинге здесь была бы ссылка на WhatsApp / Telegram / форму. Замените ссылку в коде!'); return false;">Хочу скидку →</a>
-        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">Нажимая, вы соглашаетесь на обработку данных.</p>
+<!-- Цены -->
+<div class="container">
+  <section style="padding-bottom: 60px;">
+    <h2 class="section-title">Стоимость работ</h2>
+    <div class="pricing-table">
+      <div class="pricing-card"><div class="pricing-type">Реферат</div><div class="pricing-price">от 1500 ₽</div><ul class="pricing-features"><li>10-20 страниц</li><li>Срок 1-2 дня</li><li>Бесплатные правки</li></ul><a href="#order" class="btn-outline" style="display:block; text-align:center;">Заказать</a></div>
+      <div class="pricing-card"><div class="pricing-type">Курсовая</div><div class="pricing-price">от 3500 ₽</div><ul class="pricing-features"><li>25-40 страниц</li><li>Срок от 3 дней</li><li>Презентация в подарок</li></ul><a href="#order" class="btn-outline" style="display:block; text-align:center;">Заказать</a></div>
+      <div class="pricing-card"><div class="pricing-type">Диплом</div><div class="pricing-price">от 12 000 ₽</div><ul class="pricing-features"><li>60-90 страниц</li><li>Срок от 7 дней</li><li>Доклад и раздатка</li></ul><a href="#order" class="btn-outline" style="display:block; text-align:center;">Заказать</a></div>
     </div>
-</section>
+  </section>
+</div>
 
-<!-- Подвал -->
-<footer>
-    <div class="container">
-        <p>© 2026 AromaSpace. Шаблон одностраничного лендинга.</p>
-        <p style="margin-top: 10px;">📧 hello@aromaspace.demo | 📞 +7 (999) 123-45-67</p>
+<!-- Как работаем -->
+<div class="container">
+  <section style="background: #f1f5f9; border-radius: 60px; padding: 50px 30px; margin-bottom: 60px;">
+    <h2 class="section-title">4 шага к готовой работе</h2>
+    <div class="steps">
+      <div class="step"><div class="step-number">1</div><h3>Заявка</h3><p>Заполните форму или напишите в Telegram.</p></div>
+      <div class="step"><div class="step-number">2</div><h3>Согласование</h3><p>Обсудим детали, сроки и стоимость.</p></div>
+      <div class="step"><div class="step-number">3</div><h3>Оплата</h3><p>Частичная предоплата (30-50%) удобным способом.</p></div>
+      <div class="step"><div class="step-number">4</div><h3>Сдача</h3><p>Отправляю готовую работу, при необходимости дорабатываю.</p></div>
     </div>
+  </section>
+</div>
+
+<!-- Отзывы -->
+<div class="container">
+  <h2 class="section-title">Отзывы студентов</h2>
+  <div class="testimonials">
+    <div class="testimonial-card"><div class="testimonial-text">⭐️⭐️⭐️⭐️⭐️ «Спасибо за курсовую по экономике! Препод даже не придрался, а я сдал на отлично.»</div><div class="testimonial-author">— Артём, МГУ</div></div>
+    <div class="testimonial-card"><div class="testimonial-text">⭐️⭐️⭐️⭐️⭐️ «Очень выручил с дипломом, когда времени совсем не было. Всё чётко, по делу.»</div><div class="testimonial-author">— Екатерина, ВШЭ</div></div>
+    <div class="testimonial-card"><div class="testimonial-text">⭐️⭐️⭐️⭐️⭐️ «Реферат сделали за ночь, уникальность 85%. Огромное спасибо!»</div><div class="testimonial-author">— Максим, СПбГУ</div></div>
+  </div>
+</div>
+
+<!-- Форма заказа -->
+<div class="container" id="order">
+  <div class="order-form">
+    <h2 class="section-title" style="margin-top: 0;">📋 Расскажите о задаче</h2>
+    <p style="text-align: center; margin-bottom: 30px;">Заполните форму — я свяжусь с вами в Telegram в течение 15 минут.</p>
+    <form id="taskForm">
+      <div class="form-grid">
+        <div class="form-group"><label>Ваше имя</label><input type="text" id="name" placeholder="Иван Иванов" required></div>
+        <div class="form-group"><label>Телефон / Telegram</label><input type="text" id="contact" placeholder="+7 999 123-45-67 или @username" required></div>
+        <div class="form-group"><label>Тип работы</label><select id="workType"><option>Реферат</option><option>Курсовая</option><option>Диплом</option><option>Другое</option></select></div>
+        <div class="form-group"><label>Тема работы</label><input type="text" id="topic" placeholder="Например: История России"></div>
+        <div class="form-group full-width"><label>Подробное описание</label><textarea id="description" rows="4" placeholder="Объём, требования, сроки, пожелания..."></textarea></div>
+      </div>
+      <button type="submit" class="submit-btn">🚀 Отправить в Telegram</button>
+    </form>
+    <p style="text-align: center; margin-top: 15px; color: #64748b;">Нажимая кнопку, вы соглашаетесь на обработку данных.</p>
+  </div>
+</div>
+
+<!-- Контакты -->
+<div class="container">
+  <div class="contact-block">
+    <div class="contact-item"><span>📞</span><a href="tel:+79539995298">+7 (953) 999-52-98</a></div>
+    <div class="contact-item"><span>💬</span><a href="https://t.me/a_fanisovich">@a_fanisovich</a></div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>© 2026 СтудентХелп. Все права защищены.</p>
+    <p style="margin-top: 10px;">ИП Фанисович А. | ИНН 1234567890</p>
+  </div>
 </footer>
 
 <script>
-    // Небольшой скрипт для плавной прокрутки к якорям (чтобы кнопки работали красиво)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === "#" || href === "") return;
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
+  document.getElementById('taskForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Собираем данные
+    const name = document.getElementById('name').value.trim();
+    const contact = document.getElementById('contact').value.trim();
+    const workType = document.getElementById('workType').value;
+    const topic = document.getElementById('topic').value.trim();
+    const description = document.getElementById('description').value.trim();
+
+    // Формируем сообщение
+    let message = `🆕 *Новая заявка с сайта*%0A%0A`;
+    message += `👤 *Имя:* ${name || '—'}%0A`;
+    message += `📱 *Контакты:* ${contact || '—'}%0A`;
+    message += `📚 *Тип работы:* ${workType}%0A`;
+    message += `📌 *Тема:* ${topic || '—'}%0A`;
+    message += `📝 *Описание:* ${description || '—'}%0A%0A`;
+    message += `⏱ _Отправлено: ${new Date().toLocaleString('ru-RU')}_`;
+
+    // Открываем Telegram чат с предзаполненным сообщением
+    const telegramUrl = `https://t.me/a_fanisovich?text=${message}`;
+    window.open(telegramUrl, '_blank');
+
+    // Опционально очищаем форму (можно раскомментировать)
+    // document.getElementById('taskForm').reset();
+  });
+
+  // Плавный скролл
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     });
+  });
 </script>
 
 </body>
