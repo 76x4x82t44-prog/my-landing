@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <!-- 1. SEO-оптимизация -->
+  <meta name="description" content="Помощь студентам: рефераты, курсовые, дипломы от 990 ₽. Опыт 7 лет, высокая уникальность, срочное написание. Адель Фанисович.">
+  <meta name="keywords" content="реферат на заказ, курсовая работа, дипломная работа, помощь студентам, написание рефератов, заказать курсовую, диплом на заказ, студенческие работы">
   <title>Гранит Науки — рефераты, курсовые, дипломы</title>
   <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3135/3135810.png">
   <!-- Font Awesome для иконок -->
@@ -27,7 +30,165 @@
       padding: 0 24px;
     }
 
-    /* Шапка */
+    /* 2. Кнопка "Наверх" */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      border: none;
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      z-index: 999;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+
+    #scrollTopBtn:hover {
+      background: #1d4ed8;
+      transform: scale(1.05);
+    }
+
+    /* 3. Попап (модальное окно) для скидки при уходе */
+    .exit-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(3px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+
+    .popup-content {
+      background: white;
+      max-width: 400px;
+      width: 90%;
+      padding: 30px;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+      animation: popIn 0.3s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .popup-content h3 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #2563eb;
+    }
+
+    .popup-content p {
+      margin-bottom: 20px;
+      color: #475569;
+    }
+
+    .popup-close {
+      background: #e2e8f0;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 40px;
+      margin-top: 15px;
+      cursor: pointer;
+      font-weight: 500;
+      width: 100%;
+    }
+
+    /* Таймер в ценах */
+    .timer-box {
+      background: #fee2e2;
+      color: #b91c1c;
+      padding: 10px;
+      border-radius: 20px;
+      margin: 15px 0;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* FAQ */
+    .faq-item {
+      background: white;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      padding: 0 20px;
+      border: 1px solid #e2e8f0;
+    }
+
+    .faq-question {
+      padding: 20px 0;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: #475569;
+      border-top: 0px solid #e2e8f0;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding-bottom: 20px;
+      border-top-width: 1px;
+    }
+
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    /* Галерея работ */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .gallery-card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+      transition: transform 0.2s;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .gallery-tag {
+      background: #dbeafe;
+      color: #2563eb;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    /* Остальные стили (шапка, hero, кнопки и т.д.) сохранены из предыдущей версии */
     .header {
       display: flex;
       align-items: center;
@@ -80,7 +241,6 @@
       color: white;
     }
 
-    /* Hero */
     .hero {
       display: flex;
       align-items: center;
@@ -167,7 +327,6 @@
       border-radius: 20px;
     }
 
-    /* Скидки */
     .discount-banner {
       background: linear-gradient(135deg, #fbbf24, #f59e0b);
       color: #1e293b;
@@ -193,7 +352,6 @@
       color: #b45309;
     }
 
-    /* Секции */
     .section-title {
       font-size: 2.5rem;
       font-weight: 700;
@@ -326,7 +484,6 @@
       box-shadow: 0 10px 15px -3px rgba(37,99,235,0.3);
     }
 
-    /* Блок "Обо мне" */
     .about-me {
       display: flex;
       align-items: center;
@@ -363,7 +520,6 @@
       color: #0f172a;
     }
 
-    /* Отзывы */
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -418,7 +574,6 @@
       letter-spacing: 2px;
     }
 
-    /* Форма */
     .order-form {
       background: white;
       border-radius: 40px;
@@ -538,10 +693,27 @@
         text-align: center;
         gap: 20px;
       }
+      #scrollTopBtn {
+        bottom: 20px;
+        right: 20px;
+      }
     }
   </style>
 </head>
 <body>
+
+<!-- 2. Кнопка "Наверх" -->
+<button id="scrollTopBtn" title="Наверх"><i class="fas fa-arrow-up"></i></button>
+
+<!-- 3. Попап скидки при уходе -->
+<div class="exit-popup" id="exitPopup">
+  <div class="popup-content">
+    <h3>🔥 Подождите!</h3>
+    <p>Успейте получить <strong>дополнительную скидку 10%</strong> на первый заказ прямо сейчас!</p>
+    <a href="#order" class="btn-primary" style="display:block; margin-bottom:10px;" id="popupCtaBtn">Хочу скидку</a>
+    <button class="popup-close" id="closePopup">Нет, спасибо</button>
+  </div>
+</div>
 
 <div class="container">
   <!-- Шапка -->
@@ -561,7 +733,7 @@
       <a href="#order" class="btn-primary"><i class="fas fa-pen-fancy"></i> Заказать работу</a>
       <a href="https://t.me/a_fanisovich" class="btn-outline" style="margin-right:0;"><i class="fab fa-telegram"></i> Спросить в Telegram</a>
       <div class="hero-stats">
-        <div class="stat-item"><span class="stat-number">850+</span><span class="stat-label">выполненных работ</span></div>
+        <div class="stat-item"><span class="stat-number" id="worksCounter">850</span><span class="stat-label">выполненных работ</span></div>
         <div class="stat-item"><span class="stat-number">98%</span><span class="stat-label">сдали с первого раза</span></div>
       </div>
     </div>
@@ -608,40 +780,45 @@
 <div class="container">
   <div class="about-me">
     <div class="about-photo">
-      <!-- Фото Аделя Фанисовича -->
       <img src="adel.jpg.PNG" alt="Адель Фанисович">
       <p style="margin-top:10px; font-weight:500;">Адель Фанисович</p>
     </div>
     <div class="about-text">
       <h3>👋 Давайте знакомиться</h3>
-      <p>Меня зовут Адель Фанисович. Я профессионально занимаюсь помощью студентам уже более 7 лет. За это время выполнил более 850 работ: от простых рефератов до сложных дипломных проектов.</p>
+      <p>Меня зовут Адель Фанисович. Я профессионально занимаюсь помощью студентам уже более 7 лет. За это время выполнил более <span id="worksCounter2">850</span> работ: от простых рефератов до сложных дипломных проектов.</p>
       <p>Гарантирую индивидуальный подход, глубокое погружение в тему и полное сопровождение до момента защиты. Все работы пишу лично, без посредников и шаблонов.</p>
       <p><i class="fas fa-phone-alt"></i> <strong>+7 (953) 999-52-98</strong> &nbsp; | &nbsp; <i class="fab fa-telegram"></i> <strong>@a_fanisovich</strong></p>
     </div>
   </div>
 </div>
 
-<!-- Цены со скидками -->
+<!-- Цены со скидками и таймером акции -->
 <div class="container">
   <section style="padding-bottom: 60px;">
     <h2 class="section-title">Стоимость работ</h2>
+    <!-- 5. Таймер акции -->
+    <div style="max-width:400px; margin:0 auto 30px;">
+      <div class="timer-box" id="timerBox">
+        ⏳ До конца акции: <span id="timer">23:59:59</span>
+      </div>
+    </div>
     <div class="pricing-table">
       <div class="pricing-card">
         <div class="pricing-type">Реферат</div>
-        <div class="pricing-price">от 1500 ₽ <span class="pricing-old-price">2000 ₽</span></div>
+        <div class="pricing-price">от 990 ₽ <span class="pricing-old-price">1500 ₽</span></div>
         <ul class="pricing-features"><li>10-20 страниц</li><li>Срок 1-2 дня</li><li>Бесплатные правки</li></ul>
         <a href="#order" class="btn-outline" style="display:block; text-align:center;">Заказать</a>
       </div>
       <div class="pricing-card popular">
         <span class="pricing-badge">Хит продаж</span>
         <div class="pricing-type">Курсовая</div>
-        <div class="pricing-price">от 3500 ₽ <span class="pricing-old-price">4500 ₽</span></div>
+        <div class="pricing-price">от 2490 ₽ <span class="pricing-old-price">3500 ₽</span></div>
         <ul class="pricing-features"><li>25-40 страниц</li><li>Срок от 3 дней</li><li>Презентация в подарок</li></ul>
         <a href="#order" class="btn-outline" style="display:block; text-align:center;">Заказать</a>
       </div>
       <div class="pricing-card">
         <div class="pricing-type">Диплом</div>
-        <div class="pricing-price">от 12 000 ₽ <span class="pricing-old-price">15 000 ₽</span></div>
+        <div class="pricing-price">от 8990 ₽ <span class="pricing-old-price">12000 ₽</span></div>
         <ul class="pricing-features"><li>60-90 страниц</li><li>Срок от 7 дней</li><li>Доклад и раздатка</li></ul>
         <a href="#order" class="btn-outline" style="display:block; text-align:center;">Заказать</a>
       </div>
@@ -650,9 +827,40 @@
   </section>
 </div>
 
+<!-- 7. Галерея примеров работ -->
+<div class="container">
+  <h2 class="section-title">Примеры выполненных работ</h2>
+  <div class="gallery-grid">
+    <div class="gallery-card">
+      <div class="gallery-tag">Реферат</div>
+      <h4>История России</h4>
+      <p>Тема: «Реформы Петра I», 15 стр., оригинальность 87%</p>
+      <p style="margin-top:10px;"><strong>от 990 ₽</strong></p>
+    </div>
+    <div class="gallery-card">
+      <div class="gallery-tag">Курсовая</div>
+      <h4>Экономика предприятия</h4>
+      <p>«Анализ финансовой устойчивости», 32 стр., оценка «отлично»</p>
+      <p style="margin-top:10px;"><strong>от 2490 ₽</strong></p>
+    </div>
+    <div class="gallery-card">
+      <div class="gallery-tag">Диплом</div>
+      <h4>Юриспруденция</h4>
+      <p>«Правовое регулирование договора подряда», 78 стр., защита на 5</p>
+      <p style="margin-top:10px;"><strong>от 8990 ₽</strong></p>
+    </div>
+    <div class="gallery-card">
+      <div class="gallery-tag">Статья ВАК</div>
+      <h4>Педагогика</h4>
+      <p>«Методы активного обучения», 8 стр., принята к публикации</p>
+      <p style="margin-top:10px;"><strong>от 3000 ₽</strong></p>
+    </div>
+  </div>
+</div>
+
 <!-- Как работаем -->
 <div class="container">
-  <section style="background: #f1f5f9; border-radius: 60px; padding: 50px 30px; margin-bottom: 60px;">
+  <section style="background: #f1f5f9; border-radius: 60px; padding: 50px 30px; margin: 60px 0;">
     <h2 class="section-title">4 шага к готовой работе</h2>
     <div class="steps">
       <div class="step"><div class="step-number">1</div><h3>Заявка</h3><p>Заполните форму или напишите в Telegram.</p></div>
@@ -663,10 +871,20 @@
   </section>
 </div>
 
+<!-- 9. Видеоотзыв -->
+<div class="container">
+  <h2 class="section-title">Видеоотзыв</h2>
+  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:30px; box-shadow:0 10px 25px rgba(0,0,0,0.1);">
+    <iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=1" title="Видеоотзыв студента" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+  <p style="text-align:center; margin-top:10px; color:#64748b;">Реальный отзыв студента (можно заменить ссылку на своё видео)</p>
+</div>
+
 <!-- Отзывы -->
 <div class="container">
   <h2 class="section-title">Что говорят студенты</h2>
   <div class="testimonials-grid">
+    <!-- отзывы остаются прежними -->
     <div class="testimonial-card">
       <div class="testimonial-header">
         <div class="testimonial-avatar" style="background: #3b82f6;">АС</div>
@@ -714,6 +932,27 @@
   </div>
 </div>
 
+<!-- 6. FAQ -->
+<div class="container">
+  <h2 class="section-title">Часто задаваемые вопросы</h2>
+  <div class="faq-item active">
+    <div class="faq-question">Как происходит оплата? <i class="fas fa-chevron-down"></i></div>
+    <div class="faq-answer">Работаем по частичной предоплате (30-50%) на карту. Остаток — после получения готовой работы и проверки.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">Какие гарантии качества? <i class="fas fa-chevron-down"></i></div>
+    <div class="faq-answer">Предоставляю отчёт из Антиплагиат.ВУЗ. Бесплатные правки в рамках оговорённого задания.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">Можно ли срочно? <i class="fas fa-chevron-down"></i></div>
+    <div class="faq-answer">Да, реферат могу сделать за 1 день, курсовую — от 3 дней. Стоимость срочного заказа обсуждается индивидуально.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">Вы работаете с моим вузом/городом? <i class="fas fa-chevron-down"></i></div>
+    <div class="faq-answer">Да, работаю онлайн со студентами из любых городов России и СНГ. Ориентируюсь на ваши методички.</div>
+  </div>
+</div>
+
 <!-- Форма заказа -->
 <div class="container" id="order">
   <div class="order-form">
@@ -749,9 +988,94 @@
 </footer>
 
 <script>
+  // 2. Кнопка "Наверх"
+  const scrollBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => {
+    scrollBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 3. Попап при уходе
+  const popup = document.getElementById('exitPopup');
+  const closePopup = document.getElementById('closePopup');
+  const popupCta = document.getElementById('popupCtaBtn');
+  let popupShown = false;
+
+  function showPopup() {
+    if (!popupShown) {
+      popup.style.display = 'flex';
+      popupShown = true;
+    }
+  }
+
+  // Для десктопа: мышь уходит за верхнюю границу
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY <= 0) showPopup();
+  });
+
+  // Для мобильных: попытка закрыть вкладку (срабатывает не всегда, но лучше чем ничего)
+  window.addEventListener('beforeunload', (e) => {
+    showPopup();
+    // Стандартное сообщение браузера
+    e.preventDefault();
+    e.returnValue = '';
+  });
+
+  closePopup.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+
+  popupCta.addEventListener('click', (e) => {
+    e.preventDefault();
+    popup.style.display = 'none';
+    document.querySelector('#order').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) popup.style.display = 'none';
+  });
+
+  // 4. Счётчик выполненных работ (динамический)
+  let worksCount = 850;
+  const counterElements = [document.getElementById('worksCounter'), document.getElementById('worksCounter2')];
+  function incrementCounter() {
+    worksCount += 1;
+    counterElements.forEach(el => { if(el) el.textContent = worksCount; });
+  }
+  setInterval(incrementCounter, 15000); // +1 каждые 15 секунд
+
+  // 5. Таймер акции (24 часа с момента загрузки)
+  function startTimer(duration, display) {
+    let timer = duration;
+    const interval = setInterval(() => {
+      let hours = Math.floor(timer / 3600);
+      let minutes = Math.floor((timer % 3600) / 60);
+      let seconds = timer % 60;
+      display.textContent = `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+      if (--timer < 0) {
+        clearInterval(interval);
+        display.textContent = "Акция завершена";
+        document.querySelector('.timer-box').style.background = "#e2e8f0";
+      }
+    }, 1000);
+  }
+  const timerDisplay = document.getElementById('timer');
+  const twentyFourHours = 24 * 60 * 60;
+  startTimer(twentyFourHours, timerDisplay);
+
+  // 6. FAQ аккордеон
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+      const faqItem = question.closest('.faq-item');
+      faqItem.classList.toggle('active');
+    });
+  });
+
+  // Форма (оставлено как было)
   document.getElementById('taskForm').addEventListener('submit', function(e) {
     e.preventDefault();
-
     const name = document.getElementById('name').value.trim();
     const contact = document.getElementById('contact').value.trim();
     const workType = document.getElementById('workType').value;
